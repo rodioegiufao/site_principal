@@ -709,7 +709,7 @@ body {
     margin: 0;
 }
 
-/* Classe para quando o dropdown está aberto */
+/* Classe para quando o dropdown está aberto - CONTROLADO APENAS POR JS */
 .menu-item-has-children.active .sub-menu {
     opacity: 1;
     visibility: visible;
