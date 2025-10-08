@@ -103,56 +103,6 @@ body {
     text-align: center;
 }
 
-/* GALLERY FIX */
-.gallery-container {
-    margin: 2rem 0;
-    position: relative;
-    z-index: 10;
-}
-
-.wp-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin: 2rem 0;
-    position: relative;
-    z-index: 10;
-}
-
-.gallery-item {
-    border-radius: 12px;
-    overflow: visible;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
-    transition: all 0.3s ease;
-    background: transparent;
-    position: relative;
-    z-index: 10;
-}
-
-.gallery-image {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    display: block;
-    border-radius: 12px;
-    position: relative;
-    z-index: 11;
-    background-color: transparent !important;
-}
-
-.gallery-caption {
-    padding: 1rem;
-    text-align: center;
-    background: rgba(159, 211, 232, 0.1);
-    color: var(--primary);
-    font-weight: 600;
-    font-size: 0.9rem;
-    border-radius: 0 0 12px 12px;
-    position: relative;
-    z-index: 12;
-    margin-top: -4px;
-}
-
 /* Separator */
 .section-separator {
     border: none;
@@ -441,7 +391,7 @@ body {
     color: var(--primary);
 }
 
-/* Dropdown Menu - escondido por padrão */
+/* Dropdown Menu */
 .sub-menu {
     position: absolute;
     top: 100%;
@@ -467,10 +417,6 @@ body {
     transform: translateY(0);
 }
 
-.sub-menu li {
-    margin: 0;
-}
-
 .sub-menu a {
     display: flex;
     align-items: center;
@@ -487,62 +433,7 @@ body {
     border-left-color: var(--primary);
 }
 
-/* ========== RESPONSIVIDADE ========== */
-@media (max-width: 768px) {
-    .main-menu {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-    }
-    
-    .sub-menu {
-        position: static;
-        max-height: 0;
-        opacity: 0;
-        visibility: hidden;
-        overflow: hidden;
-        border: none;
-        box-shadow: none;
-        transform: none;
-        transition: all 0.3s ease;
-    }
-    
-    .menu-item-has-children.active .sub-menu {
-        max-height: 300px;
-        opacity: 1;
-        visibility: visible;
-    }
-    
-    .sub-menu a {
-        padding: 0.5rem 0;
-        justify-content: center;
-        border-left: none;
-    }
-}
-
-@media (max-width: 480px) {
-    .main-menu {
-        gap: 0.75rem;
-    }
-    
-    .main-menu a {
-        font-size: 0.9rem;
-    }
-}
-/* Estado inicial escondido */
-.reveal {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-/* Quando visível na tela */
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ===== CARROSSEL MELHORADO ===== */
+/* ===== CARROSSEL CORRIGIDO ===== */
 .carousel-container {
     position: relative;
     width: 100%;
@@ -551,31 +442,34 @@ body {
     overflow: hidden;
     border-radius: 12px;
     box-shadow: 0 8px 30px rgba(0,0,0,0.4);
-    height: 400px; /* Altura fixa do container */
+    height: 400px;
 }
 
 .carousel-track {
     display: flex;
     transition: transform 0.6s ease-in-out;
-    width: 300%; /* 3 imagens */
     height: 100%;
 }
 
 .carousel-item {
     min-width: 100%;
     position: relative;
-    text-align: center;
     height: 100%;
+    flex-shrink: 0;
+    overflow: hidden;
 }
 
 .carousel-image {
+    position: absolute;
+    inset: 0;
     width: 100%;
-    height: auto;
-    max-height: 400px; /* mesmo limite do container */
-    object-fit: contain; /* mantém proporção da imagem */
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
     display: block;
-    margin: 0 auto;
-    border-radius: 12px;
+    opacity: 1 !important;
+    transition: none !important;
+    z-index: 1;
 }
 
 .carousel-caption {
@@ -583,16 +477,15 @@ body {
     bottom: 80px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.6);
     color: #fff;
     padding: 1rem 1.5rem;
     border-radius: 8px;
     font-size: 1.2rem;
     font-weight: 600;
-    backdrop-filter: blur(5px);
+    z-index: 4;
 }
 
-/* Botão Saiba Mais */
 .carousel-btn-more {
     position: absolute;
     bottom: 20px;
@@ -605,96 +498,10 @@ body {
     border-radius: 25px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10;
+    z-index: 4;
     font-size: 0.9rem;
 }
 
-.carousel-btn-more:hover {
-    background: var(--accent);
-    transform: translateX(-50%) translateY(-2px);
-    box-shadow: 0 5px 15px rgba(159, 211, 232, 0.4);
-}
-
-/* SE preferir manter o object-fit: cover mas com menos zoom, use esta alternativa: */
-/* 
-.carousel-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center; /* Foca no centro da imagem */
-    display: block;
-}
-*/
-
-/* Resto do CSS permanece igual */
-.carousel-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-.carousel-modal.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.modal-content {
-    background: var(--background);
-    padding: 2rem;
-    border-radius: 12px;
-    max-width: 500px;
-    width: 90%;
-    position: relative;
-    border: 2px solid var(--primary);
-}
-
-.modal-close {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: none;
-    border: none;
-    color: var(--foreground);
-    font-size: 1.5rem;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-}
-
-.modal-close:hover {
-    background: rgba(255,255,255,0.1);
-    color: var(--primary);
-}
-
-.modal-title {
-    color: var(--primary);
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-}
-
-.modal-description {
-    color: var(--foreground-light);
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-}
-
-/* Botões de navegação */
 .carousel-btn {
     position: absolute;
     top: 50%;
@@ -706,8 +513,7 @@ body {
     cursor: pointer;
     padding: 0.5rem 1rem;
     border-radius: 50%;
-    transition: background 0.3s ease;
-    z-index: 10;
+    z-index: 5;
     width: 50px;
     height: 50px;
     display: flex;
@@ -715,14 +521,9 @@ body {
     justify-content: center;
 }
 
-.carousel-btn:hover {
-    background: rgba(0,0,0,0.9);
-}
-
 .carousel-btn.prev { left: 20px; }
 .carousel-btn.next { right: 20px; }
 
-/* Indicadores */
 .carousel-indicators {
     position: absolute;
     bottom: 15px;
@@ -730,7 +531,7 @@ body {
     transform: translateX(-50%);
     display: flex;
     gap: 8px;
-    z-index: 10;
+    z-index: 5;
 }
 
 .dot {
@@ -742,71 +543,28 @@ body {
     transition: background 0.3s ease;
 }
 
-.dot.active {
-    background: var(--primary);
-}
+.dot.active { background: var(--primary); }
 
-/* Responsividade do Carrossel */
+/* Responsivo */
 @media (max-width: 768px) {
-    .carousel-container {
-        height: 350px;
-    }
-    
-    .carousel-caption {
-        bottom: 70px;
-        font-size: 1rem;
-        padding: 0.75rem 1rem;
-    }
-    
-    .carousel-btn-more {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.8rem;
-    }
-    
-    .carousel-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1.5rem;
-    }
+    .carousel-container { height: 350px; }
+    .carousel-caption { bottom: 70px; font-size: 1rem; }
+    .carousel-btn { width: 40px; height: 40px; font-size: 1.5rem; }
 }
 
 @media (max-width: 480px) {
-    .carousel-container {
-        height: 250px;
-    }
-    
-    .carousel-caption {
-        bottom: 60px;
-        font-size: 0.9rem;
-        padding: 0.5rem 0.8rem;
-    }
-    
-    .carousel-btn-more {
-        padding: 0.5rem 1rem;
-        font-size: 0.8rem;
-    }
-}
-/* ==== CORREÇÃO DE VISIBILIDADE DO CARROSSEL ==== */
-.carousel-track img {
-    opacity: 1 !important; /* garante visibilidade */
-    transition: none !important; /* remove fade problemático */
-    z-index: 5;
-    position: relative;
+    .carousel-container { height: 250px; }
+    .carousel-caption { bottom: 60px; font-size: 0.9rem; }
 }
 
-/* Evita que o carrossel fique invisível após o movimento */
-.carousel-item {
-    flex-shrink: 0;
+/* ===== REVEAL ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
     opacity: 1;
-    visibility: visible;
-}
-
-/* ---------- Garantir visibilidade e empilhamento do carrossel ---------- */
-.carousel-item { position: relative; z-index: 1; }
-.carousel-image {
-    position: relative;
-    z-index: 2;
-    opacity: 1 !important;
-    transition: none !important;
-    display: block;
+    transform: translateY(0);
 }
