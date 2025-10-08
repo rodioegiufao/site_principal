@@ -92,21 +92,31 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // ========== ANIMAÇÃO DE IMAGENS ==========
+    // ========== ANIMAÇÃO DE IMAGENS (EXCETO CARROSSEL) ==========
     const images = document.querySelectorAll('img:not(.carousel-image)');
     images.forEach(img => {
+        // Se já estiver carregada
+        if (img.complete) {
+            img.style.opacity = '1';
+            return;
+        }
+    
+        // estado inicial para imagens que ainda não carregaram
+        img.style.opacity = '0';
+        img.style.transition = 'opacity 0.3s ease';
+    
         img.addEventListener('load', function() {
             this.style.opacity = '1';
         });
-        
-        // Configurar opacidade inicial para efeito fade-in
-        if (!img.complete) {
-            img.style.opacity = '0';
-            img.style.transition = 'opacity 0.3s ease';
-        } else {
-            img.style.opacity = '1';
-        }
     });
+    
+    // Garantir visibilidade imediata das imagens do carrossel (evita que qualquer outro script as esconda)
+    const carouselImages = document.querySelectorAll('.carousel-image');
+    carouselImages.forEach(img => {
+        img.style.opacity = '1';
+        img.style.transition = 'none';
+    });
+
 
     // ========== GALERIA - LIGHTBOX ==========
     const galleryImages = document.querySelectorAll('.gallery-image');
