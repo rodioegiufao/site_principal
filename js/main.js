@@ -1,20 +1,30 @@
 // Main JavaScript for the site
 document.addEventListener('DOMContentLoaded', function() {
-    // ========== MENU DROPDOWN ==========
+    // ========== MENU DROPDOWN COM CLIQUE ==========
     const menuItems = document.querySelectorAll('.menu-item-has-children');
     
     menuItems.forEach(item => {
-        // Para dispositivos móveis
-        if (window.innerWidth <= 768) {
-            const link = item.querySelector('a');
-            link.addEventListener('click', function(e) {
+        const link = item.querySelector('a');
+        
+        link.addEventListener('click', function(e) {
+            // Prevenir comportamento padrão apenas se não for um link externo
+            if (!this.getAttribute('href') || this.getAttribute('href') === '#') {
                 e.preventDefault();
-                item.classList.toggle('active');
+            }
+            
+            // Fechar outros menus abertos
+            menuItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                }
             });
-        }
+            
+            // Abrir/fechar o menu atual
+            item.classList.toggle('active');
+        });
     });
 
-    // Fechar dropdown ao clicar fora
+    // Fechar dropdown ao clicar fora do menu
     document.addEventListener('click', function(e) {
         if (!e.target.closest('.menu-item-has-children')) {
             menuItems.forEach(item => {
@@ -22,21 +32,33 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
-    
+
+    // Fechar dropdown ao pressionar ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            menuItems.forEach(item => {
+                item.classList.remove('active');
+            });
+        }
+    });
+
     // ========== FORMULÁRIO DE CONTATO ==========
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
+            // Get form data
             const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData);
             
+            // Simple validation
             if (!data.nome || !data.email || !data.mensagem) {
                 alert('Por favor, preencha todos os campos obrigatórios.');
                 return;
             }
             
+            // Simulate form submission
             alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
             contactForm.reset();
         });
