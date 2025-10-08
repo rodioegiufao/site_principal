@@ -529,3 +529,15 @@ body {
         font-size: 0.9rem;
     }
 }
+/* Estado inicial escondido */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Quando visível na tela */
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
