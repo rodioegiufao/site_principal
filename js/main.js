@@ -1,5 +1,7 @@
 // Main JavaScript for the site
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Site carregado com sucesso!');
+
     // ========== MENU DROPDOWN COM CLIQUE ==========
     const menuItems = document.querySelectorAll('.menu-item-has-children');
     
@@ -7,8 +9,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const link = item.querySelector('a');
         
         link.addEventListener('click', function(e) {
-            // Prevenir comportamento padrão apenas se não for um link externo
-            if (!this.getAttribute('href') || this.getAttribute('href') === '#') {
+            // Prevenir comportamento padrão APENAS para links que não são externos
+            if (this.getAttribute('href') === '#ferramentas' || 
+                this.getAttribute('href') === '#sobre' || 
+                this.getAttribute('href') === '#contato') {
                 e.preventDefault();
             }
             
@@ -26,7 +30,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Fechar dropdown ao clicar fora do menu
     document.addEventListener('click', function(e) {
-        if (!e.target.closest('.menu-item-has-children')) {
+        const isClickInsideMenu = e.target.closest('.main-navigation');
+        if (!isClickInsideMenu) {
             menuItems.forEach(item => {
                 item.classList.remove('active');
             });
@@ -48,17 +53,17 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form data
+            // Pegar dados do formulário
             const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData);
             
-            // Simple validation
+            // Validação simples
             if (!data.nome || !data.email || !data.mensagem) {
                 alert('Por favor, preencha todos os campos obrigatórios.');
                 return;
             }
             
-            // Simulate form submission
+            // Simular envio do formulário
             alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
             contactForm.reset();
         });
@@ -78,6 +83,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     behavior: 'smooth',
                     block: 'start'
                 });
+                
+                // Fechar menus abertos após o scroll
+                menuItems.forEach(item => {
+                    item.classList.remove('active');
+                });
             }
         });
     });
@@ -89,16 +99,20 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.opacity = '1';
         });
         
-        // Set initial opacity for fade-in effect
-        img.style.opacity = '0';
-        img.style.transition = 'opacity 0.3s ease';
+        // Configurar opacidade inicial para efeito fade-in
+        if (!img.complete) {
+            img.style.opacity = '0';
+            img.style.transition = 'opacity 0.3s ease';
+        } else {
+            img.style.opacity = '1';
+        }
     });
 
-    // ========== GALERIA ==========
+    // ========== GALERIA - LIGHTBOX ==========
     const galleryImages = document.querySelectorAll('.gallery-image');
     galleryImages.forEach(img => {
         img.addEventListener('click', function() {
-            // Simple lightbox effect
+            // Criar lightbox
             const lightbox = document.createElement('div');
             lightbox.style.cssText = `
                 position: fixed;
@@ -116,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const enlargedImg = document.createElement('img');
             enlargedImg.src = this.src;
+            enlargedImg.alt = this.alt;
             enlargedImg.style.cssText = `
                 max-width: 90%;
                 max-height: 90%;
@@ -126,32 +141,75 @@ document.addEventListener('DOMContentLoaded', function() {
             lightbox.appendChild(enlargedImg);
             document.body.appendChild(lightbox);
             
-            // Close lightbox on click
+            // Fechar lightbox ao clicar
             lightbox.addEventListener('click', function() {
                 document.body.removeChild(lightbox);
             });
             
-            // Close on ESC key
-            document.addEventListener('keydown', function closeOnEsc(e) {
+            // Fechar com tecla ESC
+            function closeOnEsc(e) {
                 if (e.key === 'Escape') {
                     document.body.removeChild(lightbox);
                     document.removeEventListener('keydown', closeOnEsc);
                 }
-            });
+            }
+            
+            document.addEventListener('keydown', closeOnEsc);
         });
     });
 
     // ========== EFEITO DE SCROLL NO HEADER ==========
-    window.addEventListener('scroll', function() {
-        const header = document.querySelector('.site-header');
-        if (window.scrollY > 100) {
-            header.style.background = 'rgba(31, 37, 39, 0.95)';
-            header.style.backdropFilter = 'blur(10px)';
-        } else {
-            header.style.background = 'var(--background)';
-            header.style.backdropFilter = 'none';
+    const header = document.querySelector('.site-header');
+    if (header) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(31, 37, 39, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'var(--background)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    }
+
+    // ========== MELHORIAS ADICIONAIS ==========
+    
+    // Adicionar classe loaded ao body quando tudo carregar
+    window.addEventListener('load', function() {
+        document.body.classList.add('loaded');
+    });
+
+    // Prevenir que formulários sejam enviados com Enter acidentalmente
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA' && e.target.tagName !== 'BUTTON') {
+            const form = e.target.closest('form');
+            if (form && form.id !== 'contactForm') {
+                e.preventDefault();
+            }
         }
     });
 
-    console.log('Site carregado com sucesso!');
+    // Log para debug
+    console.log('JavaScript inicializado com sucesso!');
+    console.log('Menu items encontrados:', menuItems.length);
+    console.log('Imagens encontradas:', images.length);
+    console.log('Imagens da galeria:', galleryImages.length);
 });
+
+// Funções auxiliares (caso precise adicionar mais depois)
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Exemplo de função para adicionar mais tarde:
+function abrirFerramenta(url) {
+    window.open(url, '_blank');
+}
