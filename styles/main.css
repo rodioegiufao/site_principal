@@ -100,7 +100,7 @@ body {
     text-align: center;
 }
 
-/* Gallery */
+/* Gallery - CORREÇÃO COMPLETA */
 .gallery-container {
     margin: 2rem 0;
 }
@@ -114,10 +114,11 @@ body {
 
 .gallery-item {
     border-radius: 12px;
-    overflow: hidden;
+    overflow: visible; /* MUDADO de hidden para visible */
     box-shadow: 0 8px 30px rgba(0,0,0,0.4);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     background: rgba(255,255,255,0.05);
+    position: relative; /* ADICIONADO */
 }
 
 .gallery-item:hover {
@@ -130,6 +131,9 @@ body {
     height: 250px;
     object-fit: cover;
     display: block;
+    border-radius: 12px; /* ADICIONADO */
+    position: relative; /* ADICIONADO */
+    z-index: 2; /* ADICIONADO */
 }
 
 .gallery-caption {
@@ -139,6 +143,10 @@ body {
     color: var(--primary);
     font-weight: 600;
     font-size: 0.9rem;
+    border-radius: 0 0 12px 12px; /* ADICIONADO */
+    position: relative; /* ADICIONADO */
+    z-index: 3; /* ADICIONADO */
+    margin-top: -4px; /* ADICIONADO para conectar com a imagem */
 }
 
 /* Separator */
