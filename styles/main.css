@@ -570,10 +570,12 @@ body {
 
 .carousel-image {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 30%; /* Ajuste este valor: center, top, bottom, ou porcentagem */
+    height: auto;
+    max-height: 400px; /* mesmo limite do container */
+    object-fit: contain; /* mantém proporção da imagem */
     display: block;
+    margin: 0 auto;
+    border-radius: 12px;
 }
 
 .carousel-caption {
