@@ -571,9 +571,9 @@ body {
 .carousel-image {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Mudei de 'cover' para 'contain' para mostrar imagem completa */
+    object-fit: cover;
+    object-position: center 30%; /* Ajuste este valor: center, top, bottom, ou porcentagem */
     display: block;
-    background: var(--background); /* Fundo caso a imagem não preencha */
 }
 
 .carousel-caption {
