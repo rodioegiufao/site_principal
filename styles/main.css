@@ -148,7 +148,27 @@ body {
     z-index: 3; /* ADICIONADO */
     margin-top: -4px; /* ADICIONADO para conectar com a imagem */
 }
+/* FALLBACK PARA IMAGENS */
+.gallery-image {
+    width: 100% !important;
+    height: 250px !important;
+    object-fit: cover !important;
+    display: block !important;
+    border: 2px solid var(--primary) !important; /* Borda para debug */
+    background-color: rgba(159, 211, 232, 0.1) !important; /* Fundo se imagem falhar */
+}
 
+/* Garantir que as imagens sejam visíveis */
+.gallery-item {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Reset de possíveis estilos problemáticos */
+img {
+    max-width: 100%;
+    height: auto;
+}
 /* Separator */
 .section-separator {
     border: none;
