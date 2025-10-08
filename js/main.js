@@ -1,6 +1,35 @@
 // Main JavaScript for the site
 document.addEventListener('DOMContentLoaded', function() {
-    // Contact form handling
+    // ========== ABA LATERAL DE FERRAMENTAS ==========
+    const toolsSidebar = document.getElementById('tools-sidebar');
+    const openToolsBtn = document.getElementById('open-tools');
+    const closeToolsBtn = document.getElementById('close-tools');
+    
+    // Abrir aba lateral
+    if (openToolsBtn && toolsSidebar) {
+        openToolsBtn.addEventListener('click', function() {
+            toolsSidebar.classList.add('open');
+        });
+    }
+    
+    // Fechar aba lateral
+    if (closeToolsBtn && toolsSidebar) {
+        closeToolsBtn.addEventListener('click', function() {
+            toolsSidebar.classList.remove('open');
+        });
+    }
+    
+    // Fechar ao clicar fora da aba
+    document.addEventListener('click', function(e) {
+        if (toolsSidebar && toolsSidebar.classList.contains('open') && 
+            !toolsSidebar.contains(e.target) && 
+            e.target !== openToolsBtn && 
+            !openToolsBtn.contains(e.target)) {
+            toolsSidebar.classList.remove('open');
+        }
+    });
+
+    // ========== FORMULÁRIO DE CONTATO ==========
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
@@ -22,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Smooth scrolling for anchor links
+    // ========== SCROLL SUAVE ==========
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
     anchorLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -40,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Add loading animation to images
+    // ========== ANIMAÇÃO DE IMAGENS ==========
     const images = document.querySelectorAll('img');
     images.forEach(img => {
         img.addEventListener('load', function() {
@@ -52,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
         img.style.transition = 'opacity 0.3s ease';
     });
 
-    // Gallery image click handler
+    // ========== GALERIA ==========
     const galleryImages = document.querySelectorAll('.gallery-image');
     galleryImages.forEach(img => {
         img.addEventListener('click', function() {
@@ -99,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Add scroll effect to header
+    // ========== EFEITO DE SCROLL NO HEADER ==========
     window.addEventListener('scroll', function() {
         const header = document.querySelector('.site-header');
         if (window.scrollY > 100) {
