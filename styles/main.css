@@ -786,3 +786,17 @@ body {
         font-size: 0.8rem;
     }
 }
+/* ==== CORREÇÃO DE VISIBILIDADE DO CARROSSEL ==== */
+.carousel-track img {
+    opacity: 1 !important; /* garante visibilidade */
+    transition: none !important; /* remove fade problemático */
+    z-index: 5;
+    position: relative;
+}
+
+/* Evita que o carrossel fique invisível após o movimento */
+.carousel-item {
+    flex-shrink: 0;
+    opacity: 1;
+    visibility: visible;
+}
