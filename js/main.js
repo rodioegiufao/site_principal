@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ========== ANIMAÇÃO DE IMAGENS ==========
-    const images = document.querySelectorAll('img');
+    const images = document.querySelectorAll('img:not(.carousel-image)');
     images.forEach(img => {
         img.addEventListener('load', function() {
             this.style.opacity = '1';
