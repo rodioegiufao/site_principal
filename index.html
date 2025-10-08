@@ -43,16 +43,19 @@
                         <div class="gallery-container">
                             <div class="wp-gallery">
                                 <div class="gallery-item">
-                                    <img src="https://tudosobreeletrica.wordpress.com/wp-content/uploads/2025/04/imagem3.png?w=1024" 
-                                         alt="Projeto Elétrico 1" class="gallery-image">
+                                    <img src="./images/imagem1.jpg" 
+                                         alt="Projeto Elétrico - Instalações Industriais" class="gallery-image">
+                                    <div class="gallery-caption">Instalações Industriais</div>
                                 </div>
                                 <div class="gallery-item">
-                                    <img src="https://tudosobreeletrica.wordpress.com/wp-content/uploads/2025/04/imagem1.png?w=1024" 
-                                         alt="Projeto Elétrico 2" class="gallery-image">
+                                    <img src="./images/imagem2.jpg" 
+                                         alt="Projeto Elétrico - Sistemas Fotovoltaicos" class="gallery-image">
+                                    <div class="gallery-caption">Sistemas Fotovoltaicos</div>
                                 </div>
                                 <div class="gallery-item">
-                                    <img src="https://tudosobreeletrica.wordpress.com/wp-content/uploads/2025/04/imagem3-1.png?w=1024" 
-                                         alt="Projeto Elétrico 3" class="gallery-image">
+                                    <img src="./images/imagem3.jpg" 
+                                         alt="Projeto Elétrico - SPDA e Aterramento" class="gallery-image">
+                                    <div class="gallery-caption">SPDA e Aterramento</div>
                                 </div>
                             </div>
                         </div>
@@ -111,12 +114,18 @@
                         
                         <div class="about-container">
                             <div class="about-image">
-                                <img src="https://tudosobreeletrica.wordpress.com/wp-content/uploads/2025/04/whatsapp-image-2025-04-19-at-16.22.03.jpeg?w=768" 
-                                     alt="Rodrigo Damasceno" class="profile-image">
+                                <img src="./images/rodrigo.jpg" 
+                                     alt="Rodrigo Damasceno - Engenheiro Eletricista" class="profile-image">
+                                <div class="profile-info">
+                                    <h4>Rodrigo Damasceno</h4>
+                                    <p>Engenheiro Eletricista</p>
+                                    <p>CREA: 0920192912</p>
+                                </div>
                             </div>
                             <div class="about-text">
                                 <p>Meu nome é Rodrigo Damasceno, sou graduado em Engenharia Elétrica pela Universidade Federal de Roraima (UFRR), com conclusão em 2020. Posteriormente, obtive o título de mestre em Engenharia Elétrica pela Universidade Federal de Santa Maria (UFSM), com ênfase em Sistemas Elétricos de Potência.</p>
                                 <p>Atualmente, exerço o cargo de Engenheiro Eletricista na empresa Ribeiro Lopes, onde venho adquirindo sólida experiência na elaboração e desenvolvimento de projetos elétricos, abrangendo tanto redes de média quanto de baixa tensão.</p>
+                                <p>Minha paixão pela engenharia elétrica vai além do trabalho técnico - desenvolvo ferramentas especializadas para otimizar processos e garantir a excelência em todos os projetos que executo.</p>
                             </div>
                         </div>
 
@@ -144,6 +153,10 @@
                                     <strong>WhatsApp:</strong>
                                     <span>(95) 99204-9366</span>
                                 </div>
+                                <div class="contact-item">
+                                    <strong>CREA/RR:</strong>
+                                    <span>092019291-2</span>
+                                </div>
                             </div>
                             
                             <div class="contact-form">
@@ -160,16 +173,27 @@
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label for="site">Site</label>
-                                        <input type="url" id="site" name="site">
+                                        <label for="telefone">Telefone</label>
+                                        <input type="tel" id="telefone" name="telefone">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="assunto">Assunto</label>
+                                        <select id="assunto" name="assunto">
+                                            <option value="">Selecione o assunto</option>
+                                            <option value="projeto">Orçamento de Projeto</option>
+                                            <option value="consultoria">Consultoria Técnica</option>
+                                            <option value="parceria">Proposta de Parceria</option>
+                                            <option value="outro">Outro</option>
+                                        </select>
                                     </div>
                                     
                                     <div class="form-group">
                                         <label for="mensagem">Mensagem *</label>
-                                        <textarea id="mensagem" name="mensagem" rows="6" required></textarea>
+                                        <textarea id="mensagem" name="mensagem" rows="6" placeholder="Descreva seu projeto ou dúvida..." required></textarea>
                                     </div>
                                     
-                                    <button type="submit" class="submit-button">Enviar</button>
+                                    <button type="submit" class="submit-button">Enviar Mensagem</button>
                                 </form>
                             </div>
                         </div>
@@ -187,7 +211,7 @@
             <a href="http://www.linkedin.com/in/eng-rodrigo-damasceno" target="_blank">LinkedIn</a>
         </div>
         <div class="site-copyright">
-            &copy; 2024 Rodrigo Damasceno Nascimento. Todos os direitos reservados.
+            &copy; 2024 Rodrigo Damasceno Nascimento. Engenheiro Eletricista CREA/RR 092019291-2. Todos os direitos reservados.
         </div>
     </footer>
 
