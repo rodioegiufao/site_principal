@@ -195,7 +195,21 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Imagens encontradas:', images.length);
     console.log('Imagens da galeria:', galleryImages.length);
 });
+// ========== EFEITO DE REVEAL NAS SEÇÕES ==========
+const reveals = document.querySelectorAll('.reveal');
 
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target); // só anima uma vez
+        }
+    });
+}, { threshold: 0.2 }); // dispara quando 20% da seção aparece
+
+reveals.forEach(el => {
+    observer.observe(el);
+});
 // Funções auxiliares (caso precise adicionar mais depois)
 function debounce(func, wait) {
     let timeout;
