@@ -16,5 +16,16 @@
       "destination": "https://tudosobreeletrica.blog/analisador_carimbo.html",
       "permanent": true
     }
+  ],
+  "headers": [
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
   ]
 }
