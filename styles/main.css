@@ -100,9 +100,11 @@ body {
     text-align: center;
 }
 
-/* Gallery - CORREÇÃO COMPLETA */
+/* GALLERY FIX - NOVO CSS */
 .gallery-container {
     margin: 2rem 0;
+    position: relative;
+    z-index: 10;
 }
 
 .wp-gallery {
@@ -110,20 +112,20 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
     margin: 2rem 0;
+    position: relative;
+    z-index: 10;
 }
 
 .gallery-item {
     border-radius: 12px;
-    overflow: visible; /* MUDADO de hidden para visible */
+    overflow: visible; /* IMPORTANTE: mudar para visible */
     box-shadow: 0 8px 30px rgba(0,0,0,0.4);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: rgba(255,255,255,0.05);
-    position: relative; /* ADICIONADO */
-}
-
-.gallery-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+    transition: all 0.3s ease;
+    background: transparent; /* Mudar para transparent */
+    position: relative;
+    z-index: 10;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .gallery-image {
@@ -131,9 +133,12 @@ body {
     height: 250px;
     object-fit: cover;
     display: block;
-    border-radius: 12px; /* ADICIONADO */
-    position: relative; /* ADICIONADO */
-    z-index: 2; /* ADICIONADO */
+    border-radius: 12px;
+    position: relative;
+    z-index: 11;
+    opacity: 1 !important;
+    visibility: visible !important;
+    background-color: transparent !important;
 }
 
 .gallery-caption {
@@ -143,31 +148,16 @@ body {
     color: var(--primary);
     font-weight: 600;
     font-size: 0.9rem;
-    border-radius: 0 0 12px 12px; /* ADICIONADO */
-    position: relative; /* ADICIONADO */
-    z-index: 3; /* ADICIONADO */
-    margin-top: -4px; /* ADICIONADO para conectar com a imagem */
-}
-/* FALLBACK PARA IMAGENS */
-.gallery-image {
-    width: 100% !important;
-    height: 250px !important;
-    object-fit: cover !important;
-    display: block !important;
-    border: 2px solid var(--primary) !important; /* Borda para debug */
-    background-color: rgba(159, 211, 232, 0.1) !important; /* Fundo se imagem falhar */
+    border-radius: 0 0 12px 12px;
+    position: relative;
+    z-index: 12;
+    margin-top: -4px;
 }
 
-/* Garantir que as imagens sejam visíveis */
-.gallery-item {
+/* REMOVER QUALQUER ESTILO QUE ESTEJA ESCONDENDO */
+* {
     opacity: 1 !important;
     visibility: visible !important;
-}
-
-/* Reset de possíveis estilos problemáticos */
-img {
-    max-width: 100%;
-    height: auto;
 }
 /* Separator */
 .section-separator {
