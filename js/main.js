@@ -251,7 +251,77 @@ if (track) {
     updateCarousel(0);
     startInterval();
 }
+// ========== MODAL DO CARROSSEL ==========
+function initCarouselModal() {
+    const modal = document.querySelector('.carousel-modal');
+    const modalTitle = modal.querySelector('.modal-title');
+    const modalDescription = modal.querySelector('.modal-description');
+    const modalClose = modal.querySelector('.modal-close');
+    const moreButtons = document.querySelectorAll('.carousel-btn-more');
 
+    // Descrições dos projetos
+    const projectDescriptions = {
+        1: {
+            title: "Instalações Industriais",
+            description: "Projetos completos de instalações elétricas industriais, incluindo dimensionamento de circuitos, proteções, quadros de distribuição e sistemas de automação. Desenvolvemos soluções seguras e eficientes para ambientes industriais complexos."
+        },
+        2: {
+            title: "Sistemas Fotovoltaicos",
+            description: "Projetos de energia solar fotovoltaica para residências, comércios e indústrias. Inclui dimensionamento de painéis, inversores, estruturas de fixação e cálculo de payback. Sustentabilidade e economia de energia."
+        },
+        3: {
+            title: "SPDA e Aterramento",
+            description: "Sistemas de Proteção contra Descargas Atmosféricas (SPDA) e aterramento elétrico. Projetamos e implementamos sistemas que garantem a segurança de pessoas e equipamentos, seguindo as normas técnicas vigentes."
+        }
+    };
+
+    // Abrir modal
+    moreButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const projectId = this.getAttribute('data-project');
+            const project = projectDescriptions[projectId];
+            
+            if (project) {
+                modalTitle.textContent = project.title;
+                modalDescription.textContent = project.description;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Previne scroll
+            }
+        });
+    });
+
+    // Fechar modal
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    
+    // Fechar modal clicando fora
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Fechar com ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+}
+
+// Inicializar o modal quando o DOM carregar
+document.addEventListener('DOMContentLoaded', function() {
+    // ... seu código existente ...
+    
+    // Inicializar modal do carrossel
+    initCarouselModal();
+    
+    // ... resto do seu código ...
+});
 // ========== EFEITO DE REVEAL NAS SEÇÕES ==========
 const reveals = document.querySelectorAll('.reveal');
 
