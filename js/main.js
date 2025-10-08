@@ -195,6 +195,63 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Imagens encontradas:', images.length);
     console.log('Imagens da galeria:', galleryImages.length);
 });
+
+// ========== CARROSSEL ==========
+const track = document.querySelector('.carousel-track');
+const slides = document.querySelectorAll('.carousel-item');
+const prevBtn = document.querySelector('.carousel-btn.prev');
+const nextBtn = document.querySelector('.carousel-btn.next');
+const dots = document.querySelectorAll('.dot');
+
+let currentIndex = 0;
+let slideInterval;
+
+function updateCarousel(index) {
+    track.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+    currentIndex = index;
+}
+
+// Navegação manual
+nextBtn?.addEventListener('click', () => {
+    let newIndex = (currentIndex + 1) % slides.length;
+    updateCarousel(newIndex);
+    resetInterval();
+});
+
+prevBtn?.addEventListener('click', () => {
+    let newIndex = (currentIndex - 1 + slides.length) % slides.length;
+    updateCarousel(newIndex);
+    resetInterval();
+});
+
+// Indicadores
+dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+        updateCarousel(i);
+        resetInterval();
+    });
+});
+
+// Auto play
+function startInterval() {
+    slideInterval = setInterval(() => {
+        let newIndex = (currentIndex + 1) % slides.length;
+        updateCarousel(newIndex);
+    }, 4000); // troca a cada 4s
+}
+
+function resetInterval() {
+    clearInterval(slideInterval);
+    startInterval();
+}
+
+// Inicializa
+if (track) {
+    updateCarousel(0);
+    startInterval();
+}
+
 // ========== EFEITO DE REVEAL NAS SEÇÕES ==========
 const reveals = document.querySelectorAll('.reveal');
 
