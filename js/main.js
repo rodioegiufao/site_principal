@@ -165,26 +165,43 @@ document.addEventListener('DOMContentLoaded', function() {
         startInterval();
     }
 
-    // ========== MODAL DO CARROSSEL ==========
+    // ========== MODAL DO CARROSSEL ATUALIZADO ==========
     (function initCarouselModal() {
         const modal = document.querySelector('.carousel-modal');
         if (!modal) return;
+        
+        const modalImage = modal.querySelector('.modal-image');
         const modalTitle = modal.querySelector('.modal-title');
         const modalDescription = modal.querySelector('.modal-description');
         const modalClose = modal.querySelector('.modal-close');
         const moreButtons = document.querySelectorAll('.carousel-btn-more');
-
+    
         const projectDescriptions = {
-            1: { title: "Instalações Industriais", description: "Projetos completos de instalações elétricas industriais..." },
-            2: { title: "Sistemas Fotovoltaicos", description: "Projetos de energia solar fotovoltaica..." },
-            3: { title: "SPDA e Aterramento", description: "Sistemas de Proteção contra Descargas Atmosféricas..." }
+            1: { 
+                title: "Instalações Industriais", 
+                description: "Projetos completos de instalações elétricas industriais, incluindo dimensionamento de equipamentos, distribuição de energia, sistemas de proteção e comando, atendendo às normas técnicas e especificações do cliente.",
+                image: "./images/imagem1.jpg"
+            },
+            2: { 
+                title: "Sistemas Fotovoltaicos", 
+                description: "Projetos de energia solar fotovoltaica para residências, comércios e indústrias. Desenvolvimento desde o estudo de viabilidade, dimensionamento dos componentes, até o projeto executivo para aprovação na concessionária.",
+                image: "./images/imagem2.jpg"
+            },
+            3: { 
+                title: "SPDA e Aterramento", 
+                description: "Sistemas de Proteção contra Descargas Atmosféricas (SPDA) e aterramento elétrico para diversos tipos de edificações. Projetos que garantem a segurança das pessoas e equipamentos, em conformidade com a NBR 5419.",
+                image: "./images/imagem3.jpg"
+            }
         };
-
+    
         moreButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const projectId = this.getAttribute('data-project');
                 const project = projectDescriptions[projectId];
+                
                 if (project) {
+                    modalImage.src = project.image;
+                    modalImage.alt = project.title;
                     modalTitle.textContent = project.title;
                     modalDescription.textContent = project.description;
                     modal.classList.add('active');
@@ -192,11 +209,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
-
-        function closeModal() { modal.classList.remove('active'); document.body.style.overflow = 'auto'; }
+    
+        function closeModal() { 
+            modal.classList.remove('active'); 
+            document.body.style.overflow = 'auto'; 
+        }
+        
         modalClose?.addEventListener('click', closeModal);
-        modal?.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
-        document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
+        modal?.addEventListener('click', function(e) { 
+            if (e.target === modal) closeModal(); 
+        });
+        
+        document.addEventListener('keydown', function(e) { 
+            if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); 
+        });
     })();
 
     // ========== REVEAL ==========
