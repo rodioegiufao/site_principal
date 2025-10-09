@@ -670,3 +670,69 @@ body {
     background: rgba(159, 211, 232, 0.3);
     transform: translateY(-2px);
 }
+
+/* ===== LINKS SOCIAIS ===== */
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--foreground);
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.social-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    border-color: var(--primary);
+}
+
+.social-link.linkedin:hover {
+    background: rgba(10, 102, 194, 0.1);
+    color: #0a66c2;
+}
+
+.social-link.email:hover {
+    background: rgba(219, 68, 55, 0.1);
+    color: #db4437;
+}
+
+.social-link.whatsapp:hover {
+    background: rgba(37, 211, 102, 0.1);
+    color: #25d366;
+}
+
+.social-link svg {
+    transition: all 0.3s ease;
+}
+
+.form-title h4 {
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .social-links {
+        gap: 0.75rem;
+    }
+    
+    .social-link {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+}
