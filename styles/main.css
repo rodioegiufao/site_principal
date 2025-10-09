@@ -660,3 +660,13 @@ body {
         font-size: 1.5rem;
     }
 }
+/* ===== CARROSSEL CAPTION CLICÁVEL ===== */
+.carousel-caption.clickable {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-caption.clickable:hover {
+    background: rgba(159, 211, 232, 0.3);
+    transform: translateY(-2px);
+}
