@@ -174,28 +174,29 @@ document.addEventListener('DOMContentLoaded', function() {
         const modalTitle = modal.querySelector('.modal-title');
         const modalDescription = modal.querySelector('.modal-description');
         const modalClose = modal.querySelector('.modal-close');
-        const moreButtons = document.querySelectorAll('.carousel-btn-more');
+        const clickableCaptions = document.querySelectorAll('.carousel-caption.clickable');
     
         const projectDescriptions = {
             1: { 
                 title: "Instalações Industriais", 
-                description: "Projetos completos de instalações elétricas industriais, incluindo dimensionamento de equipamentos, distribuição de energia, sistemas de proteção e comando, atendendo às normas técnicas e especificações do cliente.",
+                description: "Projetos completos de instalações elétricas industriais, incluindo dimensionamento de equipamentos, distribuição de energia, sistemas de proteção e comando, atendendo às normas técnicas e especificações do cliente. Desenvolvimento de diagramas unifilares, especificação de componentes e elaboração de memorial descritivo.",
                 image: "./images/imagem1.jpg"
             },
             2: { 
                 title: "Sistemas Fotovoltaicos", 
-                description: "Projetos de energia solar fotovoltaica para residências, comércios e indústrias. Desenvolvimento desde o estudo de viabilidade, dimensionamento dos componentes, até o projeto executivo para aprovação na concessionária.",
+                description: "Projetos de energia solar fotovoltaica para residências, comércios e indústrias. Desenvolvimento desde o estudo de viabilidade, dimensionamento dos componentes (módulos, inversores, estruturas), até o projeto executivo para aprovação na concessionária. Cálculo de irradiação solar, estimativa de produção de energia e análise de retorno do investimento.",
                 image: "./images/imagem2.jpg"
             },
             3: { 
                 title: "SPDA e Aterramento", 
-                description: "Sistemas de Proteção contra Descargas Atmosféricas (SPDA) e aterramento elétrico para diversos tipos de edificações. Projetos que garantem a segurança das pessoas e equipamentos, em conformidade com a NBR 5419.",
+                description: "Sistemas de Proteção contra Descargas Atmosféricas (SPDA) e aterramento elétrico para diversos tipos de edificações. Projetos que garantem a segurança das pessoas e equipamentos, em conformidade com a NBR 5419. Dimensionamento de captores, condutores de descida, malha de aterramento e equipotencialização.",
                 image: "./images/imagem3.jpg"
             }
         };
     
-        moreButtons.forEach(button => {
-            button.addEventListener('click', function() {
+        // Adiciona evento de clique nos títulos
+        clickableCaptions.forEach(caption => {
+            caption.addEventListener('click', function() {
                 const projectId = this.getAttribute('data-project');
                 const project = projectDescriptions[projectId];
                 
