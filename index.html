@@ -11,8 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="home">
-    <!-- Admin Bar (simulada) -->
-    <!-- Tema Selector -->
     <div id="theme-selector" class="theme-selector">
         <div class="theme-selector-content">
             <div class="theme-logo">Rodrigo Damasceno</div>
@@ -27,223 +25,103 @@
             </div>
         </div>
     </div>
-
-    <!-- Header -->
-    <header id="masthead" class="site-header">
-        <div class="site-branding">
-            <p class="site-title">
-                <a href="./index.html" rel="home">Rodrigo Damasceno Nascimento</a>
-            </p>
+    
+    <header class="site-header">
+        <div class="header-content">
+            <nav class="main-navigation">
+                <ul>
+                    <li class="menu-item"><a href="#">Home</a></li>
+                    <li class="menu-item menu-item-has-children"><a href="#servicos">Serviços</a>
+                        <ul class="sub-menu">
+                            <li><a href="#projetos">Projetos Elétricos</a></li>
+                            <li><a href="#spda">SPDA</a></li>
+                            <li><a href="#fotovoltaico">Fotovoltaico</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item"><a href="#sobre">Sobre</a></li>
+                    <li class="menu-item"><a href="#ferramentas">Ferramentas</a></li>
+                    <li class="menu-item"><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
         </div>
-        
-       <!-- Menu Principal -->
-        <nav class="main-navigation">
-            <ul class="main-menu">
-                <li><a href="./index.html">Início</a></li>
-                <li class="menu-item-has-children">
-                    <a href="#ferramentas">Ferramentas ▾</a>
-                    <ul class="sub-menu">
-                        <li><a href="https://verificar-carimbo-site.vercel.app/analisador_carimbo.html" target="_blank">🔍 Analisador de Carimbos PDF</a></li>
-                    </ul>
-                </li>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <!-- Main Content -->
-    <div id="content" class="site-content">
-        <section id="primary" class="content-area">
-            <main id="main" class="site-main">
-                <article class="page">
-                    <div class="entry-content">
-                        
-                        <!-- Hero Section -->
-                        <h2 class="section-title center reveal">Trabalhos destacados</h2>
-                        
-                        <div class="carousel-container reveal">
-                            <div class="carousel-track">
-                                <!-- Slide 1 - Instalações Industriais -->
-                                <div class="carousel-item">
-                                    <img src="./images/imagem1.jpg" alt="Instalações Industriais" class="carousel-image">
-                                    <div class="carousel-caption clickable" data-project="1">Instalações Industriais</div>
-                                    <!-- Botão Saiba Mais removido -->
-                                </div>
-                                
-                                <!-- Slide 2 - Sistemas Fotovoltaicos -->
-                                <div class="carousel-item">
-                                    <img src="./images/imagem2.jpg" alt="Sistemas Fotovoltaicos" class="carousel-image">
-                                    <div class="carousel-caption clickable" data-project="2">Sistemas Fotovoltaicos</div>
-                                    <!-- Botão Saiba Mais removido -->
-                                </div>
-                                
-                                <!-- Slide 3 - SPDA e Aterramento -->
-                                <div class="carousel-item">
-                                    <img src="./images/imagem3.jpg" alt="SPDA e Aterramento" class="carousel-image">
-                                    <div class="carousel-caption clickable" data-project="3">SPDA e Aterramento</div>
-                                    <!-- Botão Saiba Mais removido -->
-                                </div>
-                            </div>
-                        
-                            <!-- Botões de navegação -->
-                            <button class="carousel-btn prev">‹</button>
-                            <button class="carousel-btn next">›</button>
-                        
-                            <!-- Indicadores -->
-                            <div class="carousel-indicators">
-                                <span class="dot active"></span>
-                                <span class="dot"></span>
-                                <span class="dot"></span>
-                            </div>
-                        </div>
-                        
-                        <!-- Modal para descrição dos projetos -->
-                        <div class="carousel-modal">
-                            <div class="modal-content">
-                                <button class="modal-close">×</button>
-                                <div class="modal-image-container">
-                                    <img src="" alt="" class="modal-image">
-                                </div>
-                                <div class="modal-text">
-                                    <h3 class="modal-title">Título do Projeto</h3>
-                                    <p class="modal-description">Descrição do projeto aparecerá aqui.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <hr class="section-separator">
-
-                        <!-- Meu Trabalho Section -->
-                        <h2 class="section-title center reveal">Meu trabalho</h2>
-                        
-                        <div class="columns-container reveal">
-                            <div class="column">
-                                <h3>Contrate-me</h3>
-                                <p class="small-text">Sou Rodrigo Damasceno, Engenheiro Eletricista graduado pela Universidade Federal de Roraima (UFRR), com formação concluída em 2020. Também sou mestre em Engenharia Elétrica pela Universidade Federal de Santa Maria (UFSM), com ênfase em Sistemas Elétricos de Potência.</p>
-                                <p class="small-text">Atualmente, desempenho minhas funções como Engenheiro Eletricista na empresa Ribeiro Lopes, onde venho acumulando sólida experiência na elaboração, coordenação e execução de projetos elétricos em redes de média e baixa tensão.</p>
-                                <p class="small-text">Se você busca excelência técnica, comprometimento e soluções eficientes em engenharia elétrica, estou à disposição para contribuir com seu projeto.</p>
-                                
-                                <!-- Siga-me movido para cá -->
-                                <div style="margin-top: 2rem;">
-                                    <h3>Siga-me</h3>
-                                    <p class="small-text">O meu portfólio apresenta vários projetos pessoais e comerciais criados durante minha carreira.</p>
-                                    <p class="small-text">Linkedin: <a href="http://www.linkedin.com/in/eng-rodrigo-damasceno" class="external-link" target="_blank">www.linkedin.com/in/eng-rodrigo-damasceno</a></p>
-                                </div>
-                            </div>
-                            
-                            <div class="column">
-                                <h3>Trabalhe comigo</h3>
-                                <p class="small-text">Minhas áreas de atuação e especialização abrangem um amplo espectro da engenharia elétrica, incluindo:</p>
-                                <ul class="feature-list">
-                                    <li>Eletrificação rural</li>
-                                    <li>Iluminação pública</li>
-                                    <li>Sistemas de baixa tensão</li>
-                                    <li>Sistemas fotovoltaicos</li>
-                                    <li>Proteção contra descargas atmosféricas (SPDA)</li>
-                                    <li>Iluminação externa</li>
-                                    <li>Infraestrutura para cabeamento estruturado</li>
-                                    <li>Sistemas de CFTV</li>
-                                    <li>Projetos de sonorização</li>
-                                    <li>Redes de telefonia</li>
-                                    <li>Subestações</li>
-                                    <li>Redes de média tensão aplicadas a empreendimentos de loteamento</li>
-                                </ul>
-                            </div>
-                            
-                            <!-- Coluna "Siga-me" removida -->
-                        </div>
-
-                        <hr class="section-separator">
-
-                        <!-- Sobre Mim Section -->
-                        <h2 class="section-title center reveal">Sobre mim</h2>
-                        
-                        <div class="about-container reveal">
-                            <div class="about-image">
-                                <img src="./images/rodrigo.jpg" 
-                                     alt="Rodrigo Damasceno - Engenheiro Eletricista" class="profile-image">
-                            </div>
-                            <div class="about-text">
-                                <p>Meu nome é Rodrigo Damasceno, sou graduado em Engenharia Elétrica pela Universidade Federal de Roraima (UFRR), com conclusão em 2020. Posteriormente, obtive o título de mestre em Engenharia Elétrica pela Universidade Federal de Santa Maria (UFSM), com ênfase em Sistemas Elétricos de Potência.</p>
-                                <p>Atualmente, exerço o cargo de Engenheiro Eletricista na empresa Ribeiro Lopes, onde venho adquirindo sólida experiência na elaboração e desenvolvimento de projetos elétricos, abrangendo tanto redes de média quanto de baixa tensão.</p>
-                                <p>Minha paixão pela engenharia elétrica vai além do trabalho técnico - desenvolvo ferramentas especializadas para otimizar processos e garantir a excelência em todos os projetos que executo.</p>
-                            </div>
-                        </div>
-
-                        <hr class="section-separator">
-
-                        <!-- Contato Section -->
-                        <h2 class="section-title center reveal">Contato</h2>
-                        
-                        <div class="contact-container reveal">
-                            <div class="contact-info">
-                                <h3>Entre em contato</h3>
-                                <div class="contact-item">
-                                    <strong>Localização:</strong>
-                                    <span>Boa Vista, Roraima - Brasil</span>
-                                </div>
-                                <div class="contact-item">
-                                    <strong>Email:</strong>
-                                    <span>rodrigoml.damasceno@gmail.com</span>
-                                </div>
-                                <div class="contact-item">
-                                    <strong>Telefone:</strong>
-                                    <span>(95) 99146-6367</span>
-                                </div>
-                                <div class="contact-item">
-                                    <strong>WhatsApp:</strong>
-                                    <span>(95) 99204-9366</span>
-                                </div>
-                                <div class="contact-item">
-                                    <strong>CREA/RR:</strong>
-                                    <span>092019291-2</span>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-form">
-                                <h3>Conecte-se comigo</h3>
-                                <div class="social-links">
-                                    <a href="http://www.linkedin.com/in/eng-rodrigo-damasceno" target="_blank" class="social-link linkedin">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                                        </svg>
-                                        <span>LinkedIn</span>
-                                    </a>
-                                    
-                                    <a href="mailto:rodrigoml.damasceno@gmail.com" class="social-link email">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                                        </svg>
-                                        <span>E-mail</span>
-                                    </a>
-                                    
-                                    <a href="https://wa.me/5595991466367" target="_blank" class="social-link whatsapp">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893c0-3.189-1.248-6.189-3.515-8.444"/>
-                                        </svg>
-                                        <span>WhatsApp</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            </main>
+    <main class="site-main">
+        
+        <section class="hero-section section-padding reveal">
+            <div class="hero-content">
+                <h1 class="site-title">Rodrigo Damasceno Nascimento: Engenharia que Conecta o Futuro.</h1>
+                <p class="hero-subtitle">Engenheiro Eletricista pela UFRR, Mestre pela UFSM. Especialista em inovação, eficiência energética e projetos de alta complexidade.</p>
+                <a href="#contato" class="button primary-button">Vamos Conversar</a>
+            </div>
+            <div class="hero-image">
+                <img src="./images/rodrigo.jpg" alt="Foto profissional de Rodrigo Damasceno, um engenheiro sorrindo." loading="lazy">
+            </div>
         </section>
-    </div>
 
-    <!-- Footer -->
-    <footer id="colophon" class="site-footer">
-        <div class="site-info">
-            <a class="site-name" href="./index.html" rel="home">Rodrigo Damasceno Nascimento</a> - 
-            <a href="https://verificar-carimbo-site.vercel.app/analisador_carimbo.html" target="_blank">Analisador de PDF</a> - 
-            <a href="http://www.linkedin.com/in/eng-rodrigo-damasceno" target="_blank">LinkedIn</a>
-        </div>
-        <div class="site-copyright">
-            &copy; 2024 Rodrigo Damasceno Nascimento. Engenheiro Eletricista CREA/RR 092019291-2. Todos os direitos reservados.
-        </div>
-    </footer>
+        <section id="servicos" class="section-padding services-section">
+            <h2 class="section-title reveal">Serviços Chave</h2>
+            <div class="bento-grid reveal">
+                <div class="grid-item primary-focus">
+                    <h3 id="projetos">Projetos Elétricos</h3>
+                    <p>Desenvolvimento completo de projetos elétricos residenciais, comerciais e industriais, com foco em segurança e normatização ABNT NBR 5410.</p>
+                    <a href="#" class="item-link">Ver Detalhes</a>
+                </div>
+                
+                <div class="grid-item medium-focus">
+                    <h3 id="fotovoltaico">Sistemas Fotovoltaicos</h3>
+                    <p>Dimensionamento e implementação de sistemas de geração de energia solar, garantindo máxima eficiência e retorno do investimento (ROI).</p>
+                    <a href="#" class="item-link">Ver Detalhes</a>
+                </div>
+                
+                <div class="grid-item medium-focus">
+                    <h3 id="spda">SPDA e Aterramento</h3>
+                    <p>Laudos e projetos de Sistemas de Proteção contra Descargas Atmosféricas (SPDA) e aterramento, conforme a NBR 5419.</p>
+                    <a href="#" class="item-link">Ver Detalhes</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="section-padding about-section">
+            <h2 class="section-title reveal">Minha Trajetória</h2>
+            <p class="about-text reveal">Sou um profissional apaixonado por resolver desafios complexos com soluções elétricas inteligentes. Minha formação e experiência me permitem atuar desde a concepção até a execução, sempre buscando a excelência técnica e a satisfação do cliente.</p>
+        </section>
+
+        <section id="ferramentas" class="section-padding tools-section">
+            <h2 class="section-title reveal">Ferramentas e Tecnologias</h2>
+            <div class="bento-grid reveal">
+                <div class="grid-item small-focus">
+                    <h4>AutoCAD e Revit</h4>
+                    <p>Modelagem e detalhamento de projetos em 2D e BIM.</p>
+                </div>
+                <div class="grid-item small-focus">
+                    <h4>MATLAB / Python</h4>
+                    <p>Análise de sistemas de potência e otimização de algoritmos.</p>
+                </div>
+                <div class="grid-item small-focus">
+                    <h4>Microcontroladores</h4>
+                    <p>Desenvolvimento de soluções IoT e automação industrial.</p>
+                </div>
+                <div class="grid-item small-focus">
+                    <h4>Softwares PV</h4>
+                    <p>PV*SOL, Homer e ferramentas de simulação fotovoltaica.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="section-padding contact-section">
+            <h2 class="section-title reveal">Entre em Contato</h2>
+            <div class="contact-grid">
+                </div>
+            
+            <form id="contactForm" class="contact-form reveal">
+                </form>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        </footer>
 
     <script src="./js/main.js"></script>
 </body>
