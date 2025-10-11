@@ -237,4 +237,42 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, { threshold: 0.2 });
     reveals.forEach(el => observer.observe(el));
+    // ========== SELETOR DE TEMA ==========
+    (function initThemeSelector() {
+        const themeSelector = document.getElementById('theme-selector');
+        const themeButtons = document.querySelectorAll('.theme-btn');
+        const html = document.documentElement;
+        
+        // Carregar tema salvo
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', savedTheme);
+        
+        // Ativar botão correto
+        themeButtons.forEach(btn => {
+            if (btn.dataset.theme === savedTheme) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+        
+        // Event listeners para os botões de tema
+        themeButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const theme = this.dataset.theme;
+                
+                // Atualizar atributo data-theme
+                html.setAttribute('data-theme', theme);
+                
+                // Salvar preferência
+                localStorage.setItem('theme', theme);
+                
+                // Atualizar botões ativos
+                themeButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                console.log('Tema alterado para:', theme);
+            });
+        });
+    })();
 });
