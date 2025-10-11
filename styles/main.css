@@ -7,7 +7,9 @@
     --foreground-dark: #090a0b;
     --border: #364043;
     --accent: #77c1de;
+    --gap: 20px; /* Variável para espaçamento do grid */
 }
+
 
 * {
     margin: 0;
@@ -994,4 +996,135 @@ body {
 
 [data-theme="light"] .dot.active {
     background: var(--primary);
+}
+/* Estilos para Transições Suaves (Microinterações) */
+a, button, input[type="submit"], .item-link, .social-link {
+    transition: all 0.3s ease-in-out; /* Transição geral aplicada */
+}
+
+/* Estilos para Tipografia Expressiva */
+.site-title {
+    font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem); /* Tipografia fluida e superdimensionada */
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: var(--primary); /* Destaque na cor principal */
+}
+
+.section-title {
+    font-size: clamp(2rem, 4vw + 0.5rem, 3.5rem);
+    font-weight: 600;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+/* Foco de Acessibilidade (WCAG) - Essencial */
+a:focus, button:focus, input:focus, textarea:focus, select:focus {
+    outline: 3px solid var(--accent); /* Contorno mais grosso e destacado */
+    outline-offset: 4px; /* Afasta o contorno do elemento */
+}
+
+/* Estilo do Botão - Transição e Foco Aprimorados */
+.button {
+    /* ... Seus estilos existentes ... */
+    border: 2px solid var(--primary);
+    background-color: var(--primary);
+    color: var(--foreground-dark);
+    font-weight: 600;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.button:hover {
+    background-color: transparent;
+    color: var(--primary);
+    transform: translateY(-2px); /* Efeito de elevação sutil */
+}
+
+/* ============ Implementação do Bentô Grid ============ */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--gap);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.grid-item {
+    background-color: var(--background); /* Garantindo que o fundo seja o mesmo */
+    border: 1px solid var(--border); /* Linhas e bordas visíveis (tendência) */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transição para o hover */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.grid-item:hover {
+    border-color: var(--primary); /* Destaque no hover */
+    transform: translateY(-5px); /* Efeito de profundidade */
+}
+
+.grid-item h3, .grid-item h4 {
+    margin-top: 0;
+    color: var(--primary);
+}
+
+.grid-item p {
+    flex-grow: 1;
+    margin-bottom: 15px;
+}
+
+.item-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    align-self: flex-start;
+}
+
+.item-link:hover {
+    text-decoration: underline;
+    color: var(--primary);
+}
+
+/* Definição de pesos no Bentô Grid (Para a seção de Serviços) */
+@media (min-width: 900px) {
+    .services-section .bento-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 colunas no desktop */
+    }
+    
+    /* Item de foco primário ocupa 2 colunas */
+    .services-section .primary-focus {
+        grid-column: span 2;
+    }
+    
+    /* Demais itens ocupam 1 coluna */
+    .services-section .medium-focus {
+        grid-column: span 1;
+    }
+}
+
+/* Estilos para a seção de ferramentas (que usa small-focus) */
+.tools-section .bento-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Mais compacto */
+}
+
+.tools-section .grid-item {
+    background: rgba(159, 211, 232, 0.05); /* Um fundo mais suave */
+}
+
+/* Reaplicando Dark Mode para o novo Bentô Grid */
+[data-theme="light"] .bento-grid .grid-item {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-color: #e0e0e0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .tools-section .grid-item {
+    background: rgba(44, 90, 160, 0.08);
 }
