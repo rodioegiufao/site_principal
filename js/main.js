@@ -237,42 +237,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, { threshold: 0.2 });
     reveals.forEach(el => observer.observe(el));
-    // ========== SELETOR DE TEMA ==========
+    // ========== SELETOR DE TEMA COM TOGGLE SWITCH ==========
     (function initThemeSelector() {
-        const themeSelector = document.getElementById('theme-selector');
-        const themeButtons = document.querySelectorAll('.theme-btn');
+        const themeToggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
         
         // Carregar tema salvo
         const savedTheme = localStorage.getItem('theme') || 'dark';
         html.setAttribute('data-theme', savedTheme);
         
-        // Ativar botão correto
-        themeButtons.forEach(btn => {
-            if (btn.dataset.theme === savedTheme) {
-                btn.classList.add('active');
-            } else {
-                btn.classList.remove('active');
-            }
-        });
+        // Configurar o toggle baseado no tema salvo
+        if (savedTheme === 'light') {
+            themeToggle.checked = true;
+        } else {
+            themeToggle.checked = false;
+        }
         
-        // Event listeners para os botões de tema
-        themeButtons.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const theme = this.dataset.theme;
-                
-                // Atualizar atributo data-theme
-                html.setAttribute('data-theme', theme);
-                
-                // Salvar preferência
-                localStorage.setItem('theme', theme);
-                
-                // Atualizar botões ativos
-                themeButtons.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                
-                console.log('Tema alterado para:', theme);
-            });
+        // Event listener para o toggle
+        themeToggle.addEventListener('change', function() {
+            const theme = this.checked ? 'light' : 'dark';
+            
+            // Atualizar atributo data-theme
+            html.setAttribute('data-theme', theme);
+            
+            // Salvar preferência
+            localStorage.setItem('theme', theme);
+            
+            console.log('Tema alterado para:', theme);
         });
     })();
 });
